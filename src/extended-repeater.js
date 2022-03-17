@@ -1,4 +1,4 @@
-import { NotImplementedError } from '../extensions/index.js';
+const { NotImplementedError } = require('../extensions/index.js');
 
 /**
  * Create a repeating string based on the given parameters
@@ -15,10 +15,14 @@ import { NotImplementedError } from '../extensions/index.js';
  * => 'STRINGPLUS00PLUS00PLUS**STRINGPLUS00PLUS00PLUS**STRINGPLUS00PLUS00PLUS'
  *
  */
-export default function repeater(str, options) {
+function repeater(str, options) {
   const { repeatTimes, separator = '+', addition = '', additionRepeatTimes, additionSeparator = '|' } = options;
   const withAddition = new Array(additionRepeatTimes).fill(String(addition)).join(additionSeparator);
   const result = new Array(repeatTimes).fill(str + withAddition).join(separator);
 
   return result;
 }
+
+module.exports = {
+  repeater
+};
