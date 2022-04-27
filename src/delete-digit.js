@@ -12,10 +12,15 @@ const { NotImplementedError } = require('../extensions/index.js');
  *
  */
 function deleteDigit(n) {
-  const arr = n.toString().split('');
-  const min = Math.min.apply(this, arr).toString();
-  const deletedNum = arr.splice(arr.indexOf(min), 1);
-  return Number(arr.join(''));
+  let max = 0;
+  for (let i = 0; i < n.toString().split('').length; i++){
+    const arr = n.toString().split('');
+    arr.splice(i, 1);
+    if (+arr.join('') > max) {
+      max = +arr.join('');
+    }
+  }
+  return max;
 }
 
 module.exports = {
